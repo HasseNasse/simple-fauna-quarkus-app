@@ -2,16 +2,12 @@ package bar.foo.article;
 
 import static com.faunadb.client.query.Language.Collection;
 import static com.faunadb.client.query.Language.Create;
-import static com.faunadb.client.query.Language.Documents;
 import static com.faunadb.client.query.Language.Exists;
 import static com.faunadb.client.query.Language.Get;
 import static com.faunadb.client.query.Language.If;
 import static com.faunadb.client.query.Language.Index;
-import static com.faunadb.client.query.Language.Lambda;
 import static com.faunadb.client.query.Language.Let;
-import static com.faunadb.client.query.Language.Map;
 import static com.faunadb.client.query.Language.Match;
-import static com.faunadb.client.query.Language.Paginate;
 import static com.faunadb.client.query.Language.Replace;
 import static com.faunadb.client.query.Language.Select;
 import static com.faunadb.client.query.Language.Value;
@@ -22,7 +18,6 @@ import bar.foo.article.domain.ArticleComments;
 import com.faunadb.client.FaunaClient;
 import com.faunadb.client.query.Expr;
 import com.google.gson.Gson;
-import bar.foo.article.domain.ArticleMeta;
 import java.util.concurrent.ExecutionException;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
@@ -32,10 +27,8 @@ import org.jboss.logging.Logger;
 
 @RequestScoped
 public class Repository {
-  private static final String ARTICLE_COLLECTION = "articles";
   private static final String ARTICLE_COMMENTS_COLLECTION = "articleComments";
   private static final String ARTICLE_COMMENTS_INDEX = "articleCommentsIndex";
-  private static final String ARTICLE_INDEX = "articleIndex";
   private static final Gson gson = new Gson();
 
   @Inject

@@ -2,7 +2,6 @@ package bar.foo.article;
 
 import bar.foo.article.domain.ArticleComments;
 import bar.foo.article.domain.Comment;
-import bar.foo.article.domain.ArticleMeta;
 import java.util.Arrays;
 import java.util.Optional;
 import java.util.concurrent.ExecutionException;
