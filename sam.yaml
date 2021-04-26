@@ -1,0 +1,36 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: simple-fauna-quarkus-app
+
+Parameters:
+  Service:
+    Type: String
+
+Globals:
+  Api:
+    Name: !Sub ${Service}-api-${Environment}
+    EndpointConfiguration: REGIONAL
+    BinaryMediaTypes:
+      - "*/*"
+
+
+Resources:
+  SimpleQuarkusFaunaNativeService:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub ${Service}
+      Handler: not.used.in.provided.runtimei
+      Runtime: provided
+      CodeUri: target/function.zip
+      MemorySize: 128
+      Policies:
+        - AWSLambdaBasicExecutionRole
+        - AmazonSESFullAccess
+      Timeout: 15
+      Environment:
+        Variables:
+          DISABLE_SIGNAL_HANDLERS: true
+      Events:
+        HttpApiEvent:
+          Type: HttpApi
+
